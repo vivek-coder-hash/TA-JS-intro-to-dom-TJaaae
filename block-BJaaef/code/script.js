@@ -9,8 +9,38 @@
           </article>*/
 
 
-          let div  = document.querySelector(".container")
+          /*let div  = document.querySelector(".container")
           let art  = document.querySelector(".flex-30")
           let insidediv  = document.querySelector(".align-center")
 
-          got.houses.
+          got.houses.*/
+
+
+
+          let allPeople  =got.houses.reduce((acc,cv)=>{
+              acc=acc.concat(cv.people)
+              return acc
+
+          }, [])
+
+
+         let cardsHTML= allPeople.map(function(el) {
+              return  `
+
+              <article class="flex-30">
+            <div class="flex justify-between align-center">
+              <img src=${el.image} alt="1">
+              <p>${el.name}</p>
+
+            </div>
+            <h2 class="description"> ${el.description}</h2>
+              <a href=${el.wikiLink}>Learn More!</a>
+          </article>
+
+              `
+          })
+
+
+          let div  = document.querySelector(".container")
+
+          div.innerHTML =cardsHTML.join("")
